@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- <h1>Your cart</h1> -->
+    <!-- <p>Your cart is currently empty.</p> -->
+    <!-- <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a> -->
+
+    <div id="cartItems">
+	<h2>Shopping Cart</h2>
+	<div id="tableItems">
+		{% for item in cart %}
+		<div>
+			<hr id="seperator">
+			<!-- <div id="itemImage"> -->
+				
+			<!-- </div> -->
+			<div id="itemName">
+				<span id="itemNameTag">{{item.product_id}}</span>
+				
+			</div>
+			
+		</div>
+		{% endfor %}
+		
+	</div>
+</div>
+<!-- <a href="/checkout">Proceed to checkout</a> -->
+{% endblock content %}

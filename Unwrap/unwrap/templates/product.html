@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+      <h2 class="article-title">{{ product.name }}</h2>
+      <p class="article-content">{{ product.description }}</p>
+      <div id="addToCart">
+		<a href="/addToCart/{{product.id}}">Add to cart</a>
+	</div>
+    </div>
+  </article>
+  
+{% endblock content %}
