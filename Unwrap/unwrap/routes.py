@@ -90,44 +90,12 @@ def how_it_works():
      return render_template("how-it-works.html", title='How it works')
 
 
-# @app.route("/select_products/new", methods=['GET', 'POST'])
 @app.route("/select_products", methods=['GET', 'POST'])
-# @login_required
 def select_products():
     products = Products.query.all()
-    # form = AddToCartForm()
-    # if form.validate_on_submit():
-    #     # item_to_add = Cart(name=product.name, product_id=product.id, buyer=current_user)
-    #     item_to_add = Cart(name=form.name, product_id=form.product_id, buyer=current_user)
-    #     db.session.add(item_to_add)
-    #     db.session.commit()
-    #     flash('Your item has been added to your cart!', 'success')
-    #     return redirect(url_for('home'))
     return render_template('select_products.html', products=products)
 
 
-# <div class="form-group">
-                        # {{ form.submit(class="btn btn-outline-info") }}
-                        # </div>
-
-
-@app.route("/product/<int:product_id>")
-def queryproduct(product_id):
-    product = Products.query.get_or_404(product_id)
-    return render_template('product.html', product=product)
-
-    # <a href="{{ url_for('product', product_id=product.id) }}">{{ product.name }}</a>
-
-# @app.route("/addToCart")
-# @login_required
-# def addToCart():
-    
-#     product_id = int(request.args.get('product_id'))
-#     # user_id = current_user
-#     item_to_add = Cart(product_id=product_id, buyer=current_user)
-#     db.session.add(item_to_add)
-#     db.session.commit()
-#     return redirect(url_for('select_products'))
 
 @app.route("/addToCart/<int:product_id>")
 @login_required
@@ -136,11 +104,12 @@ def addToCart(product_id):
     item_to_add = Cart(product_id=product.id, buyer=current_user)
     db.session.add(item_to_add)
     db.session.commit()
+    flash('Your item has been added to your cart!', 'success')
     return redirect(url_for('select_products'))
 
 
 
 @app.route("/cart")
 def cart():
-    cart = Cart.query.all()
+    cart = Products.query.join(Cart).filter_by(user_id=current_user.id).all()
     return render_template('cart.html', cart=cart)

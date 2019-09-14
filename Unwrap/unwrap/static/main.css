@@ -78,3 +78,9 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+/*to do*/
+.nav-item
+{
+  margin-right: 20px
+}

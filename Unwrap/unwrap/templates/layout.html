@@ -44,9 +44,9 @@
               <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
               <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
               {% else %}
-
-              <ul class="navbar-nav navbar-right">
-              <li class="nav-item">
+    
+              <ul class="navbar-nav navbar-right" style="font-size: 25px;">
+              <li class="nav-item" style="margin-right: 20px;" >
                 <a href="#"><span class="glyphicon glyphicon-search"></span></a>
               </li>
               <li class="nav-item">                      
@@ -57,7 +57,7 @@
               </li>      
               </ul>
 
-                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link"  href="{{ url_for('login') }}">Login</a>
                 <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
               
               {% endif %}
