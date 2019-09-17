@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
 
 <!--for glyphicons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 
     {% if title %}
         <title>Unwrap - {{ title }}</title>
@@ -21,44 +24,48 @@
         <title>Unwrap</title>
     {% endif %}
 </head>
-<body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+<body style="color: #00264d" >
+    <header class="site-header" style="height: 80px " >
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="height: 80px ">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">Unwrap</a>
+          <a class="navbar-brand mr-4" href="/"><img id="logo"  style="height:60px"
+            src= {{ url_for('static', filename='logo2.jpg') }}  />
+          </a>
+          
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
+
+          <div class="collapse navbar-collapse" id="navbarToggle" style="font-family: 'Manjari', sans-serif;">
+            <div class="navbar-nav mr-auto" style="margin:auto; width: 50%;">
               <a class="nav-link" href="{{ url_for('unwrap_project') }}">The project</a>
               <a class="nav-link" href="{{ url_for('home') }}">Subscription</a>
-              <a class="nav-link" href="{{ url_for('partners') }}">Partners</a>
-              <a class="nav-link" href="{{ url_for('how_it_works') }}">How it works</a>
-              
+              <a class="nav-link" href="{{ url_for('select_products') }}">Products</a>
+              <!-- <a class="nav-link" href="{{ url_for('how_it_works') }}">How it works</a> -->
+            
             </div>
+
             <!-- Navbar Right Side -->
             <div class="navbar-nav navbar-right">
               {% if current_user.is_authenticated %}
               <a class="nav-item nav-link" href="{{ url_for('cart') }}">Cart</a>
+              <small>{{noOfItems}}</small>
               <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
               <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
               {% else %}
     
               <ul class="navbar-nav navbar-right" style="font-size: 25px;">
-              <li class="nav-item" style="margin-right: 20px;" >
-                <a href="#"><span class="glyphicon glyphicon-search"></span></a>
-              </li>
+              <!-- <li class="nav-item" > -->
+                <!-- <a href="#"><span class="glyphicon glyphicon-search" style="color: #00264d; margin-right: 20px;"></span></a> -->
+              <!-- </li> -->
               <li class="nav-item">                      
-              <a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-user"></span></a>                 
+              <a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-user" style="color: #00264d; margin-right: 20px;"></span></a>                 
               </li>
               <li class="nav-item">
-              <a href="{{ url_for('cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+              <a href="{{ url_for('cart') }}"><span class="glyphicon glyphicon-shopping-cart" style="color: #00264d; margin-right: 20px;"></span></a>
               </li>      
               </ul>
 
-                <a class="nav-item nav-link"  href="{{ url_for('login') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
               
               {% endif %}
             </div>
@@ -66,8 +73,8 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container">
-      <div class="row">
+    <main role="main" class="container" style="padding: 0px" >
+      <div class="row" style="font-family: 'Manjari', sans-serif;">
         <div class="col-md-12">
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -82,36 +89,36 @@
         </div>
       </div>
     </main>
-       <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <h5 class="card-title">Quick Links</h5>
-            <p class="card-text">Contact Us</p>
-            <p class="card-text">Blog</p>
+      <footer style="background-color: #f2f2f2; font-family: 'Manjari', sans-serif; margin-top: 40px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <h5 class="card-title"><b>Quick Links</b></h5>
+              <p class="card-text">Contact Us</p>
+              <p class="card-text">Blog</p>
+            </div>
+            <div class="col-sm-4">
+              <h5 class="card-title"><b>Terms and Conditions</b></h5>
+              <p class="card-text">Please read our <span><a href="..">terms and conditions here.</a></span></p>
+            </div>
+            <div class="col-sm-4">
+              <h5 class="card-title"><b>Newsletter</b></h5>
+              <form class="form-inline">
+                <div class="form-group mb-2">
+                  <label for="inputEmail2" class="sr-only">Email</label>
+                  <input type="text" class="form-control" id="inputEmail2" placeholder="Email">
+                </div>
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                </div>
+              </form>
+            </div>
           </div>
-        <div class="col-sm-4">
-          <h5 class="card-title">Terms and Conditions</h5>
-          <p class="card-text">Please read our terms and conditions here.</p>
         </div>
-        <div class="col-sm-4">
-          <h5 class="card-title">Newsletter</h5>
-          <form class="form-inline">
-            <div class="form-group mb-2">
-              <label for="inputEmail2" class="sr-only">Email</label>
-              <input type="text" class="form-control" id="inputEmail2" placeholder="Email">
-            </div>
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
-            </div>
-          </form>
-        </div>
-      </div>
-   </div>
         <!--<footer class="small text-center text-muted">-->
         <!--    Website built by HM <a href="https://google.com/">linkedin</a>.-->
         <!--</footer>-->
-    </footer>
+      </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

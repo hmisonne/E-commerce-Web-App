@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST" action="">
+        <form method="POST" action="" style="margin: auto; width: 60%; padding: 50px">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
+                <legend class="border-bottom mb-4">Create Account</legend>
                 <div class="form-group">
                     {{ form.firstname.label(class="form-control-label") }}
 
@@ -76,11 +75,12 @@
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                    </small>
+                </div>
         </form>
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
-    </div>
+
+
 {% endblock content %}

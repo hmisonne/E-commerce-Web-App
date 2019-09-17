@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
     <!-- <div class="row"> -->
-        <form method="POST" action="">
+        <form method="POST" action="" style="margin: auto; width: 60%; padding: 50px">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
+                <legend class="border-bottom mb-4" style="text-align: center;">Log In</legend>
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -31,22 +31,17 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-check">
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
-                </div>
+                
             </fieldset>
-            <div class="form-group">
+            <div class="form-group" style="text-align: center;">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
-            <small class="text-muted ml-2">
-                <a href="#">Forgot Password?</a>
-            </small>
+                <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+                </small>
         </form>
     <!-- </div> -->
     <!-- <div class="row"> -->
-        <small class="text-muted">
-            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
-        </small>
+        
     <!-- </div> -->
 {% endblock content %}
