@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+    {% for product in products %}
+    
+
+        <div class="col-sm">
+	        <div class="card" style="width: 25rem; height: 30rem">
+			  	<img src="..." class="card-img-top" alt="...">
+			  	<div class="card-body">
+
+						<div>
+
+							<form action="/addToCart" method="post">
+				        <div class="form-group">
+				            <div>{{ product.name }}
+				        </div>
+				        <div name="product_id">{{product.id}}
+				        		</div>
+				 			<p class="card-text">{{ product.description }}</p>
+				        <button class="btn btn-primary" type="submit">Add to cart</button>
+				    </form>
+
+
+					    
+
+        		</div>
+			</div>
+		</div>
+
+	
+             
+
+    {% endfor %}
+</div>
+{% endblock content %}

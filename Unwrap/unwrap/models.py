@@ -2,14 +2,6 @@ from datetime import datetime
 from unwrap import db, login_manager
 from flask_login import UserMixin
 
-#  https://www.pythoncentral.io/sqlalchemy-expression-language-advanced/
-# from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, Float
-# from sqlalchemy.orm import relationship, backref
-# from sqlalchemy.ext.declarative import declarative_base
-
-
-# Base = declarative_base()
-# end from
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -41,6 +33,7 @@ class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # quantity = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f"Cart('Product id:{self.product_id}','id: {self.id}','User id:{self.user_id}'')"

@@ -5,7 +5,7 @@ from unwrap import app, db, bcrypt
 from unwrap.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from unwrap.models import User, Products, Cart
 from flask_login import login_user, current_user, logout_user, login_required
-from sqlalchemy import func
+from sqlalchemy import func, update
 
 def getLoginDetails():
     if current_user.is_authenticated:
@@ -111,12 +111,21 @@ def addToCart(product_id):
     return redirect(url_for('select_products'))
 
 
-
-@app.route("/cart")
+@app.route("/cart", methods=["GET", "POST"])
+@login_required
 def cart():
     noOfItems = getLoginDetails()
     cart = Products.query.join(Cart).filter_by(buyer=current_user).all()
-    return render_template('cart.html', cart=cart, noOfItems=noOfItems)
+    subtotal = 0
+    for item in cart:
+        subtotal+=int(item.price)
+    print(subtotal)
+
+    # if request.method == "POST":
+    #     qty = request.form.get("qty")
+    #     idpd = request.form.get("idpd")
+    #     stmt = update(Cart).where(product_id==idpd).values(quantity=qty)
+    return render_template('cart.html', cart=cart, noOfItems=noOfItems, subtotal=subtotal)
 
 @app.route("/removeFromCart/<int:product_id>")
 @login_required

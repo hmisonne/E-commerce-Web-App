@@ -14,35 +14,41 @@
     <a href="{{ url_for('select_products') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a>
 
 	{% else %}
-		<div style=" position: absolute; right: 0px;">Price</div>
+		<div style=" position: absolute; right: 0px; margin-top: -10px">Price</div>
 		<div id="tableItems" >
 
 			{% for item in cart %}
 			
 				<hr>
-				<div id="itemName">
-					<span id="itemNameTag">{{item.name}}</span>
+				<div id="itemName" style=" text-align: 	left;">
+					<span id="itemNameTag" >{{item.name}}</span>
 
 					<span id="itemNameTag"><div style=" position: absolute; right: 0px;">${{item.price}}</div></span>
-					<div class="form-group">
-					    <!-- <label for="exampleFormControlSelect1">Quantity</label> -->
-					    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px">
+
+					     <!-- <form action="/cart" method="post"> -->
+        						<div class="form-group">
+            
+        
+
+        				<!-- <p name="idpd">	{{item.id}}</p> -->
+<!-- 					    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px" name="qty">
 					      <option disabled="Quantity">Qty</option>
 					      <option>1</option>
 					      <option>2</option>
 					      <option>3</option>
 					      <option>4</option>
 					      <option>5</option>
-					    </select>
-					</div>
-					<!-- <button> -->
+					    </select> -->
+
+					    <!-- <button class="btn btn-primary" type="submit">Update</button> -->
+
 						<a href="/removeFromCart/{{item.id}}">Delete</a>
-					<!-- </button> -->
+
 				</div>
 
 			{% endfor %}
 			<div id="total" style=" position: absolute; right: 0px;">
-				<span id="subtotal">Subtotal</span> : $
+				<span id="subtotal">Subtotal: ${{subtotal}}</span>
 			</div>
 		</div>
 	{% endif %}

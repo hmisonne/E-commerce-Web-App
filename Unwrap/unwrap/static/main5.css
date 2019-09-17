@@ -1,27 +1,27 @@
 body {
   background: #fafafa;
-  color: #333333;
   margin-top: 5rem;
+  color: #00264d; 
+  text-align: center
 }
+
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #00264d;
 }
 
-.bg-steel {
-  background-color: #5f788a;
-}
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: #00264d;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  text-decoration: underline;
 }
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
+  text-decoration: underline;
 }
 
 .content-section {
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.5rem;
 }
 
-to do
+
 .nav-item
 {
   margin-right: 20px
@@ -47,4 +47,8 @@ footer {
   left: 0;
   bottom: 0;
   text-align: center;
+  background-color: #f2f2f2;
+  font-family: 'Manjari', sans-serif;
+  margin-top: 40px;
+  color: #00264d
 }
