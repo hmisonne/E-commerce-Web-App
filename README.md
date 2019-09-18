@@ -23,7 +23,7 @@ The issues that I haven't been able to solve so far:
 
 What else could be implemented:
 - The option for an admin user to enter products (I entered manually the products using the terminal db.session.add("product").) 
-- The option to select and adjust the quantity
+- The option to select and adjust the quantity (on the cart.html template and routes.py, I intentionally left "silenced code") 
 - The option to check out
 
 
