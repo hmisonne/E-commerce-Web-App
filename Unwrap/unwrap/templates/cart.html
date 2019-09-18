@@ -14,16 +14,17 @@
     <a href="{{ url_for('select_products') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a>
 
 	{% else %}
-		<div style=" position: absolute; right: 0px; margin-top: -10px">Price</div>
+		<div style=" text-align: right;">Price</div>
 		<div id="tableItems" >
 
 			{% for item in cart %}
 			
 				<hr>
 				<div id="itemName" style=" text-align: 	left;">
+					<img src="/static/product{{ item.id }}.jpg" class="card-img-top" alt="..." style="height: 80px; width:80px">
 					<span id="itemNameTag" >{{item.name}}</span>
 
-					<span id="itemNameTag"><div style=" position: absolute; right: 0px;">${{item.price}}</div></span>
+					<span id="itemNameTag"><div style=" text-align: right">${{item.price}}</div></span>
 
 					     <!-- <form action="/cart" method="post"> -->
         						<div class="form-group">
@@ -47,7 +48,8 @@
 				</div>
 
 			{% endfor %}
-			<div id="total" style=" position: absolute; right: 0px;">
+			<hr>
+			<div id="total" style=" text-align: right">
 				<span id="subtotal">Subtotal: ${{subtotal}}</span>
 			</div>
 		</div>

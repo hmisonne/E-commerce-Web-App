@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
+
       <div class="media">
         <div class="media-body">
           <h2 class="account-heading">{{ current_user.firstname }}</h2>
           <p class="text-secondary">{{ current_user.email }}</p>
         </div>
       </div>
-        <form method="POST" action="" enctype="multipart/form-data" style="margin: auto; width: 60%;">
+        <form method="POST" action="" enctype="multipart/form-data" class="form">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Account Info</legend>
@@ -57,5 +57,5 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
         </form>
-    </div>
+
 {% endblock content %}
