@@ -1,5 +1,7 @@
 # myfirstwebapp
 
+test
+
 After completing my first computer science class through CS50 (EDX), I decided to build an e-commerce website
 using python, flask, SQLalchemy (and also HTML, CSS, Jinja).
 
