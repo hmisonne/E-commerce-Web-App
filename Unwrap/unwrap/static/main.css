@@ -4,8 +4,14 @@ body {
   color: #00264d; 
   text-align: center;
   font-family: 'Manjari', sans-serif;
+
 }
 
+h1, h2, h3, h4
+{
+  width: 100%;
+
+}
 
 #navbarToggle
 {
