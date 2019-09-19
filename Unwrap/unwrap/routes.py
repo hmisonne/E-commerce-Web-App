@@ -119,7 +119,6 @@ def cart():
     subtotal = 0
     for item in cart:
         subtotal+=int(item.price)
-    print(subtotal)
 
     # if request.method == "POST":
     #     qty = request.form.get("qty")
