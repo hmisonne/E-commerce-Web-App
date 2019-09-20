@@ -17,9 +17,8 @@ to the Cart model with the user id and product id. When the user click on his ca
 
 To see this website, once you are in the unwrap folder (command prompt) enter "python run.py"
 
-The issues that I haven't been able to solve so far:
+The issue that I haven't been able to solve so far:
 - When the screen size is reduced, a toggle button will appear but the icons will stack up vertically instead of staying horizontal
-- On the home page, the div are overlapping with each other.
 
 What else could be implemented:
 - The option for an admin user to enter products (I entered manually the products using the terminal db.session.add("product").) 

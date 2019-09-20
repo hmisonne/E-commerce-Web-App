@@ -23,9 +23,11 @@ h1, h2, h3, h4
   margin-left: -20px
 }
 
-#cartitems
+.card
 {
-  /*margin-top: 5px*/
+  width: 25rem; 
+  height: 40rem;
+  margin-bottom: 20px;
 }
 
 .carousel-inner
