@@ -121,10 +121,12 @@ def cart():
     for item in cart:
         subtotal+=int(item.price)
 
-    # if request.method == "POST":
-    #     qty = request.form.get("qty")
-    #     idpd = request.form.get("idpd")
-    #     stmt = update(Cart).where(product_id==idpd).values(quantity=qty)
+    if request.method == "POST":
+        qty = request.form.get("qty")
+        idpd = request.form.get("idpd")
+        print("qty",qty)
+        print("id",idpd)
+        # stmt = update(Cart).where(product_id==idpd).values(quantity=qty)
     return render_template('cart.html', cart=cart, noOfItems=noOfItems, subtotal=subtotal)
 
 @app.route("/removeFromCart/<int:product_id>")

@@ -22,26 +22,26 @@
 				<hr>
 				<div id="itemName" style=" text-align: 	left;">
 					<img src="/static/product{{ item.id }}.jpg" class="card-img-top" alt="..." style="height: 80px; width:80px">
-					<span id="itemNameTag" >{{item.name}}</span>
+					<span id="itemNameTag">{{item.name}}</span>
 
 					<span id="itemNameTag"><div style=" text-align: right">${{item.price}}</div></span>
 
-					     <!-- <form action="/cart" method="post"> -->
+					     <form action="{{ url_for('cart') }}" method="post">
         						<div class="form-group">
             
         
 
-        				<!-- <p name="idpd">	{{item.id}}</p> -->
-<!-- 					    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px" name="qty">
+        				<p name="idpd">	{{item.id}}</p>
+					    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px" name="qty">
 					      <option disabled="Quantity">Qty</option>
 					      <option>1</option>
 					      <option>2</option>
 					      <option>3</option>
 					      <option>4</option>
 					      <option>5</option>
-					    </select> -->
+					    </select>
 
-					    <!-- <button class="btn btn-primary" type="submit">Update</button> -->
+					    <button class="btn btn-primary" type="submit">Update</button>
 
 						<a href="/removeFromCart/{{item.id}}">Delete</a>
 
