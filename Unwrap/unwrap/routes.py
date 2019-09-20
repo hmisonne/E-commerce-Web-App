@@ -14,6 +14,7 @@ def getLoginDetails():
         noOfItems = 0
     return noOfItems
 
+
 @app.route("/")
 @app.route("/home")
 def home():
