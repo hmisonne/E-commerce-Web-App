@@ -124,3 +124,8 @@ footer {
   margin-top: 40px;
   color: #00264d
 }
+
+.nav-link
+{
+  display: inline;
+}

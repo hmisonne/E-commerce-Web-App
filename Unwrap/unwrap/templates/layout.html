@@ -8,13 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    
     <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
 <!--for glyphicons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
 
     {% if title %}
@@ -42,10 +43,10 @@
 
             <!-- Navbar Right Side -->
           </div>
-            <div class="navbar-nav" style="float:right;">
+            <div class="navbar-nav nostack" style="display: inline;">
               {% if current_user.is_authenticated %}
       
-              <a class="nav-item nav-link" href="{{ url_for('cart') }}"><span class="glyphicon glyphicon-shopping-cart" id="cartitems" ></span></a>
+              <a class="nav-item nav-link" href="{{ url_for('cart') }}" ><span class="glyphicon glyphicon-shopping-cart" id="cartitems" ></span></a>
           
               <small id="noOfItems">{{noOfItems}}</small>
               <a class="nav-item nav-link" href="{{ url_for('account') }}"><span class="glyphicon glyphicon-user" ></span></a>    
@@ -53,8 +54,8 @@
               
               {% else %}
                
-                  <a class="nav-item nav-link" href="{{ url_for('login') }}"><span class="glyphicon glyphicon-user" ></span></a>                 
-                 <a class="nav-item nav-link" href="{{ url_for('cart') }}" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                  <a class="nav-item nav-link" href="{{ url_for('login') }}" ><span class="glyphicon glyphicon-user" ></span></a>                 
+                 <a class="nav-item nav-link" href="{{ url_for('cart') }}"  ><span class="glyphicon glyphicon-shopping-cart"></span></a>
 
               {% endif %}
             </div>
