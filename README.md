@@ -6,7 +6,7 @@ using python, flask, SQLalchemy (and also HTML, CSS, Jinja).
 The original website is hosted here: https://unwrapla.com/ and operated through Shopify. This is a zero waste business offering
 refilling services for cleaning and beauty products.
 
-I re-created this web app and tried to imitate their design and main features. 
+I reproduced this web app and tried to imitate their design and main features. 
 
 On this project I focused on implementing a shopping cart that uses a dynamic database. Once logged in, the user can browse products 
 and add them or remove them from their cart.
@@ -17,12 +17,8 @@ to the Cart model with the user id and product id. When the user click on his ca
 
 To see this website, once you are in the unwrap folder (command prompt) enter "python run.py"
 
-The issue that I haven't been able to solve so far:
-- When the screen size is reduced, a toggle button will appear but the icons will stack up vertically instead of staying horizontal
-
 What else could be implemented:
-- The option for an admin user to enter products (I entered manually the products using the terminal db.session.add("product").) 
-- The option to select and adjust the quantity (on the cart.html template and routes.py, I intentionally left "silenced code") 
+- The option for an admin user to enter products (the products are currently loaded from a CSV file with the import function) 
 - The option to check out
 
 
