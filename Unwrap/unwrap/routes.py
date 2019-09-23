@@ -14,6 +14,7 @@ def getLoginDetails():
         noOfItems = 0
     return noOfItems
 
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -73,14 +74,6 @@ def account():
     return render_template('account.html', title='Account',
                            form=form)
 
-# @app.route("/partners")
-# def partners():
-#      return render_template("partners.html", title='Partners')
-
-# @app.route("/products-list")
-# def products_list():
-#      return render_template("products-list.html", title='Products list')
-
 @app.route("/unwrap-project")
 def unwrap_project():
     noOfItems = getLoginDetails()
@@ -103,11 +96,21 @@ def select_products():
 @app.route("/addToCart/<int:product_id>")
 @login_required
 def addToCart(product_id):
-    product = Products.query.get_or_404(product_id)
-    item_to_add = Cart(product_id=product.id, buyer=current_user)
-    db.session.add(item_to_add)
-    db.session.commit()
-    flash('Your item has been added to your cart!', 'success')
+    # check if product is already in cart
+    row = Cart.query.filter_by(product_id=product_id).first()
+    if row:
+        # if in cart update quantity : +1
+        cartitem = Cart.query.filter_by(product_id=product_id).first()
+        cartitem.quantity += 1
+        db.session.commit()
+        flash('This item is already in your cart, 1 quantity added!', 'success')
+        # if not add item to cart
+    else:
+        product = Products.query.get_or_404(product_id)
+        item_to_add = Cart(product_id=product.id, buyer=current_user)
+        db.session.add(item_to_add)
+        db.session.commit()
+        flash('Your item has been added to your cart!', 'success')
     return redirect(url_for('select_products'))
 
 
@@ -115,21 +118,26 @@ def addToCart(product_id):
 @login_required
 def cart():
     noOfItems = getLoginDetails()
-    cart = Products.query.join(Cart).filter_by(buyer=current_user).all()
+    cart = Products.query.join(Cart).add_columns(Cart.quantity, Products.price, Products.name, Products.id).filter_by(buyer=current_user).all()
     subtotal = 0
     for item in cart:
-        subtotal+=int(item.price)
+        subtotal+=int(item.price)*int(item.quantity)
 
-    # if request.method == "POST":
-    #     qty = request.form.get("qty")
-    #     idpd = request.form.get("idpd")
-    #     stmt = update(Cart).where(product_id==idpd).values(quantity=qty)
+    if request.method == "POST":
+        qty = request.form.get("qty")
+        idpd = request.form.get("idpd")
+        cartitem = Cart.query.filter_by(product_id=idpd).first()
+        cartitem.quantity = qty
+        db.session.commit()
+        cart = Products.query.join(Cart).add_columns(Cart.quantity, Products.price, Products.name, Products.id).filter_by(buyer=current_user).all()
+        subtotal = 0
+        for item in cart:
+            subtotal+=int(item.price)*int(item.quantity)
     return render_template('cart.html', cart=cart, noOfItems=noOfItems, subtotal=subtotal)
 
 @app.route("/removeFromCart/<int:product_id>")
 @login_required
 def removeFromCart(product_id):
-
     item_to_remove = Cart.query.filter_by(product_id=product_id, buyer=current_user).first()
     db.session.delete(item_to_remove)
     db.session.commit()

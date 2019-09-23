@@ -3,8 +3,7 @@
     <!-- <h1>Your cart</h1> -->
     <!-- <p>Your cart is currently empty.</p> -->
     <!-- <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a> -->
-
-    <div id="cartItems">
+<div id="cartItems">
 	<h2>Shopping Cart</h2>
 
 
@@ -22,29 +21,31 @@
 				<hr>
 				<div id="itemName" style=" text-align: 	left;">
 					<img src="/static/product{{ item.id }}.jpg" class="card-img-top" alt="..." style="height: 80px; width:80px">
-					<span id="itemNameTag" >{{item.name}}</span>
+					<span id="itemNameTag">{{item.name}}</span>
 
 					<span id="itemNameTag"><div style=" text-align: right">${{item.price}}</div></span>
 
-					     <!-- <form action="/cart" method="post"> -->
-        						<div class="form-group">
-            
+				    <form action="{{ url_for('cart') }}" method="post">
+    					<div class="form-group">
         
+    
 
-        				<!-- <p name="idpd">	{{item.id}}</p> -->
-<!-- 					    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px" name="qty">
-					      <option disabled="Quantity">Qty</option>
-					      <option>1</option>
-					      <option>2</option>
-					      <option>3</option>
-					      <option>4</option>
-					      <option>5</option>
-					    </select> -->
+	        				<input type="hidden" name="idpd" value="{{item.id}}"/>
+						    <select class="form-control" id="exampleFormControlSelect1" style="width:70px; height: 30px" name="qty">
+						      <option disabled="Quantity">Qty</option>
+						      <option selected="QtyinCart">{{item.quantity}}</option>
+						      <option>1</option>
+						      <option>2</option>
+						      <option>3</option>
+						      <option>4</option>
+						      <option>5</option>
+						    </select>
 
-					    <!-- <button class="btn btn-primary" type="submit">Update</button> -->
+						    <button class="btn btn-primary" type="submit">Update</button>
 
-						<a href="/removeFromCart/{{item.id}}">Delete</a>
-
+							<a href="/removeFromCart/{{item.id}}">Delete</a>
+						</div>
+					</form>
 				</div>
 
 			{% endfor %}
@@ -54,6 +55,6 @@
 			</div>
 		</div>
 	{% endif %}
-
+</div>
 <!-- <a href="/checkout">Proceed to checkout</a> -->
 {% endblock content %}
