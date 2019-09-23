@@ -97,20 +97,17 @@ def select_products():
 @login_required
 def addToCart(product_id):
     # check if product is already in cart
-    row = Cart.query.filter_by(product_id=product_id).first()
+    row = Cart.query.filter_by(product_id=product_id, buyer=current_user).first()
     if row:
         # if in cart update quantity : +1
-        cartitem = Cart.query.filter_by(product_id=product_id).first()
-        cartitem.quantity += 1
+        row.quantity += 1
         db.session.commit()
         flash('This item is already in your cart, 1 quantity added!', 'success')
-        # if not add item to cart
+        
+        # if not, add item to cart
     else:
-        product = Products.query.get_or_404(product_id)
-        item_to_add = Cart(product_id=product.id, buyer=current_user)
-        db.session.add(item_to_add)
-        db.session.commit()
-        flash('Your item has been added to your cart!', 'success')
+        user = User.query.get(current_user.id)
+        user.add_to_cart(product_id)
     return redirect(url_for('select_products'))
 
 
@@ -118,6 +115,7 @@ def addToCart(product_id):
 @login_required
 def cart():
     noOfItems = getLoginDetails()
+    # display items in cart
     cart = Products.query.join(Cart).add_columns(Cart.quantity, Products.price, Products.name, Products.id).filter_by(buyer=current_user).all()
     subtotal = 0
     for item in cart:
