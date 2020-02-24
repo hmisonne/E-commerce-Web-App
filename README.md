@@ -1,9 +1,12 @@
-# myfirstwebapp
+# E-Commerce Web App Using Python Flask and SQLAlchemy.
+
+Description
+------------
 
 After completing my first computer science class through CS50 (EDX), I decided to build an e-commerce website
 using python, flask, SQLalchemy (and also HTML, CSS, Jinja).
 
-The original website is hosted here: https://unwrapla.com/ and operated through Shopify. This is a zero waste business offering
+The original website is hosted [here:](https://unwrapla.com/) and operated through Shopify. This is a zero waste business offering
 refilling services for cleaning and beauty products.
 
 I reproduced this web app and tried to imitate their design and main features. 
@@ -15,14 +18,23 @@ The database includes 3 models: User, Products and Cart. When a user add a produ
 to the Cart model with the user id and product id. When the user click on his cart, he will be able to see what is in his cart
 (product name, price) and remove an item from its cart.
 
-To see this website, once you are in the unwrap folder (command prompt) enter "python run.py"
+
+Install
+------------
+To run this website on your computer, once you are in the unwrap folder (command prompt) enter 
+
+`python run.py`
+
+Contribution
+------------
 
 What else could be implemented:
 - The option for an admin user to enter products (the products are currently loaded from a CSV file with the import function) 
 - The option to check out
 
 
-Here are the resources I used:
+Resources
+------------
 
 - Corey Schafer youtube tutorial "Python Flask Tutorial: Full-Featured Web App"
 https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
