@@ -1,8 +1,5 @@
 # E-Commerce Web App Using Python Flask and SQLAlchemy.
 
-Description
-------------
-
 After completing my first computer science class through CS50 (EDX), I decided to build an e-commerce website
 using python, flask, SQLalchemy (and also HTML, CSS, Jinja).
 
@@ -19,22 +16,23 @@ to the Cart model with the user id and product id. When the user click on his ca
 (product name, price) and remove an item from its cart.
 
 
-Install
-------------
-To run this website on your computer, once you are in the unwrap folder (command prompt) enter 
+## How to run this application locally
 
-`python run.py`
+To install all the packages, run:
 
-Contribution
-------------
+```
+pip3 install -r requirements.txt
+```
 
-What else could be implemented:
-- The option for an admin user to enter products (the products are currently loaded from a CSV file with the import function) 
-- The option to check out
+Then run:
+
+```
+cd unwrap
+python run.py
+```
 
 
-Resources
-------------
+## Resources
 
 - Corey Schafer youtube tutorial "Python Flask Tutorial: Full-Featured Web App"
 https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
